@@ -2,6 +2,9 @@ CC = gcc
 CFLAGS = -lglfw -lGL -lGLEW -lGLU
 gltest:*.c
 	$(CC) $^ $(CFLAGS) -o $@
-.PHONY:clean
+.PHONY:clean git
 clean:
 	rm -rf *.out *.o gltest
+git:
+	git add .
+	git commit -m "Learn GL"
