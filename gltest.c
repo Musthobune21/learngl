@@ -10,7 +10,7 @@ int main(int argc,char *argv[])
 	GLFWwindow* win=glfwCreateWindow(640,480,"GLTEST",NULL,NULL);
 	if(win==NULL)
 	{
-		printf("AMC's duty!unable to create window!\n");
+		printf("an AMC duty!unable to create window!\n");
 		glfwTerminate();
 		return -1;
 	}
@@ -19,7 +19,6 @@ int main(int argc,char *argv[])
 	glfwSetFramebufferSizeCallback(win,framebuffersize_callback);
 	glewExperimental=GL_TRUE;
 	glewInit();
-	//int width,height;
 	//glfwGetFramebufferSize(win,&width,&height);
 	//glViewport(0,0,width,height);
 	//Shaders
