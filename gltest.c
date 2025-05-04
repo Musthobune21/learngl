@@ -16,11 +16,12 @@ int main(int argc,char *argv[])
 	}
 	glfwMakeContextCurrent(win);
 	glfwSetKeyCallback(win, key_callback);
+	glfwSetFramebufferSizeCallback(win,framebuffersize_callback);
 	glewExperimental=GL_TRUE;
 	glewInit();
-	int width,height;
-	glfwGetFramebufferSize(win,&width,&height);
-	glViewport(0,0,width,height);
+	//int width,height;
+	//glfwGetFramebufferSize(win,&width,&height);
+	//glViewport(0,0,width,height);
 	//Shaders
 	GLfloat vertatri[]=
 	{
