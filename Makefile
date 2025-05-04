@@ -8,3 +8,4 @@ clean:
 git:
 	git add .
 	git commit -m "Learn GL"
+	git log
