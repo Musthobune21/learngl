@@ -1,5 +1,5 @@
 CC = gcc
-CFLAGS = -lglfw -lGL -lGLEW -lGLU
+CFLAGS = -lm -lglfw -lGL -lGLEW -lGLU
 gltest:*.c
 	$(CC) $^ $(CFLAGS) -o $@
 .PHONY:clean git
