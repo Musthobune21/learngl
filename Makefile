@@ -5,6 +5,7 @@ gltest:*.c
 .PHONY:clean git
 clean:
 	rm -rf *.out *.o gltest
+
 git:
 	git add .
 	git commit -m "Learn GL"

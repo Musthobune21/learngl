@@ -57,6 +57,10 @@ int main(int argc,char *argv[])
 		glfwPollEvents();
 		glClear(GL_COLOR_BUFFER_BIT);
 		glUseProgram(shaderprogram);
+		TimeValue=glfwGetTime();
+		UpdateValue=(sin(TimeValue)/2.0f) + 0.5f;
+		WhereUniform=glGetUniformLocation(shaderprogram,"transcolor");
+		glUniform4f(WhereUniform,0.0f,UpdateValue,0.0f,1.0f);
 		glBindVertexArray(vao);
 		glDrawArrays(GL_TRIANGLES, 0, 3);
 		glBindVertexArray(0);

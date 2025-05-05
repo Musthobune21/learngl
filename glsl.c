@@ -7,7 +7,8 @@ const GLchar* VSSource="#version 330 core\n"
     "}\0";
 const GLchar* FSSource="#version 330 core\n"
     "out vec4 color;\n"
+    "uniform vec4 transcolor;\n"
     "void main()\n"
     "{\n"
-    "color = vec4(0.5f,0.5f,0.5f,1.0f);\n"
+    "color = transcolor;\n"
     "}\0";
