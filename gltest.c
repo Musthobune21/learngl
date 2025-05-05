@@ -60,7 +60,7 @@ int main(int argc,char *argv[])
 		GLfloat TimeValue=glfwGetTime();
 	    GLfloat UpdateValue=(sin(TimeValue)/2.0f) + 0.5f;
 		GLint WhereUniform=glGetUniformLocation(shaderprogram,"transcolor");
-		glUniform4f(WhereUniform,0.5f,UpdateValue,0.5f,0.2f);
+		glUniform4f(WhereUniform,0.5f,UpdateValue,0.6f,0.2f);
 		glBindVertexArray(vao);
 		glDrawArrays(GL_TRIANGLES, 0, 3);
 		glBindVertexArray(0);
