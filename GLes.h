@@ -6,8 +6,6 @@
 #include <math.h>
 //variables and functions
 extern int width,height;
-extern GLfloat UpdateValue,TimeValue;
-extern GLint WhereUniform;
 extern const GLchar *VSSource,*FSSource;
 void framebuffersize_callback(GLFWwindow* win,int width,int height);
 void key_callback(GLFWwindow* win,int key,int scancode,int action,int mode);
