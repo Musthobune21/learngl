@@ -5,11 +5,10 @@
 #include <stdio.h>
 #include <math.h>
 //variables and functions
-int width,height;
-GLfloat UpdateValue,TimeValue;
-GLint WhereUniform;
-extern const GLchar *VSSource;
-extern const GLchar *FSSource;
+extern int width,height;
+extern GLfloat UpdateValue,TimeValue;
+extern GLint WhereUniform;
+extern const GLchar *VSSource,*FSSource;
 void framebuffersize_callback(GLFWwindow* win,int width,int height);
 void key_callback(GLFWwindow* win,int key,int scancode,int action,int mode);
 #endif
