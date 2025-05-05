@@ -57,7 +57,7 @@ int main(int argc,char *argv[])
 		glfwPollEvents();
 		glClear(GL_COLOR_BUFFER_BIT);
 		glUseProgram(shaderprogram);
-		GLfloatTimeValue=glfwGetTime();
+		GLfloat TimeValue=glfwGetTime();
 	    GLfloat UpdateValue=(sin(TimeValue)/2.0f) + 0.5f;
 		GLint WhereUniform=glGetUniformLocation(shaderprogram,"transcolor");
 		glUniform4f(WhereUniform,0.0f,UpdateValue,0.0f,1.0f);
