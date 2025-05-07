@@ -29,9 +29,9 @@ int main(int argc,char *argv[])
 		0.5f,-0.5f,0.0f,
 		0.0f,0.5f,0.0f
 	};
-	Use.fvert="./vertex.glsl";
-	Use.ffrag="./fragment.glsl"
-	Use.setfile=true;
+	use.fvert="./vertex.glsl";
+	use.ffrag="./fragment.glsl";
+	use.setfile=true;
 /*	
 GLuint vershader=glCreateShader(GL_VERTEX_SHADER);
 	glShaderSource(vershader,1,&VSSource,NULL);
@@ -64,11 +64,12 @@ GLuint vershader=glCreateShader(GL_VERTEX_SHADER);
 		glfwPollEvents();
 		glClear(GL_COLOR_BUFFER_BIT);
 		//glUseProgram(shaderprogram);
-		Use.ifuse=true
-		GLfloat TimeValue=glfwGetTime();
+		use.ifuse=true;
+		/*GLfloat TimeValue=glfwGetTime();
 	    GLfloat UpdateValue=(sin(TimeValue)/2.0f) + 0.5f;
-		GLint WhereUniform=glGetUniformLocation(shaderprogram,"transcolor");
+		GLint WhereUniform=glGetUniformLocation(Use.PID,"transcolor");
 		glUniform4f(WhereUniform,0.0f,UpdateValue,0.0f,1.0f);
+		*/
 		glBindVertexArray(vao);
 		glDrawArrays(GL_TRIANGLES, 0, 3);
 		glBindVertexArray(0);

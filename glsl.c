@@ -1,7 +1,5 @@
 #include "GLes.h"
-
-
-void GLSLFileReader(char *vertfile,char fragfile,char buffer[],char buffer2[])
+void GLSLFileReader(char *vertfile,char *fragfile,char buffer[],char buffer2[])
 {
     FILE *ifvert,*iffrag;
     int lenv,lenf;
@@ -30,7 +28,7 @@ GLuint GLSLShaderCompiler(const GLchar *verSource,const GLchar *fragSource)
     glCompileShader(verOBJ);
     
     fragOBJ=glCreateShader(GL_FRAGMENT_SHADER);
-	glShaderSource(fragOBJ,1,&FragSource,NULL);
+	glShaderSource(fragOBJ,1,&fragSource,NULL);
 	glCompileShader(fragOBJ);
 	
 	Program=glCreateProgram();
@@ -42,12 +40,12 @@ GLuint GLSLShaderCompiler(const GLchar *verSource,const GLchar *fragSource)
 	
 	return Program;
 }
-if(Use.ifuse==true)
-    glUseProgram(Use.PID);
-if(Use.setfile==true)
-{
-    GLSLFileReader(Use.fvert,Use.ffrag,Use.Use.BUFF,Use.BUFF2);
-    const GLchar *VSSource=&Use.BUFF;
-    const GLchar *FSSource=&Use.BUFF;
-    Use.PID = GLSLShaderCompiler(VSSource,FSSource);
+
+if(use.ifuse == true) glUseProgram(use.PID);
+
+if(use.setfile == true){
+    GLSLFileReader(use.fvert,use.ffrag,use.BUFF,use.BUFF2);
+    const GLchar *VSSource=&use.BUFF;
+    const GLchar *FSSource=&use.BUFF2;
+    use.PID = GLSLShaderCompiler(VSSource,FSSource);
 }
