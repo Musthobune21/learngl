@@ -29,11 +29,11 @@ int main(int argc,char *argv[])
 		0.5f,-0.5f,0.0f,
 		0.0f,0.5f,0.0f
 	};
-	use.fvert="./vertex.glsl";
-	use.ffrag="./fragment.glsl";
-	use.setfile=true;
+GLuint VertexID,FragmentID,PID;
+shader_compile(&VertexID,GL_VERTEX_SHADER,"./vertex.glsl");
+shader_compile(&FragmentID,GL_FRAGMENT_SHADER,"./fragment.glsl");
+PID=shader_link(VertexID,FragmentID);
 /*	
-GLuint vershader=glCreateShader(GL_VERTEX_SHADER);
 	glShaderSource(vershader,1,&VSSource,NULL);
 	glCompileShader(vershader);
 	GLuint fragshader=glCreateShader(GL_FRAGMENT_SHADER);
@@ -63,8 +63,7 @@ GLuint vershader=glCreateShader(GL_VERTEX_SHADER);
 	{
 		glfwPollEvents();
 		glClear(GL_COLOR_BUFFER_BIT);
-		//glUseProgram(shaderprogram);
-		use.ifuse=true;
+		glUseProgram(PID);
 		/*GLfloat TimeValue=glfwGetTime();
 	    GLfloat UpdateValue=(sin(TimeValue)/2.0f) + 0.5f;
 		GLint WhereUniform=glGetUniformLocation(Use.PID,"transcolor");

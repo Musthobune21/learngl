@@ -1,51 +1,55 @@
 #include "GLes.h"
-void GLSLFileReader(char *vertfile,char *fragfile,char buffer[],char buffer2[])
+char* shader_file_reader(const char* filename)
 {
-    FILE *ifvert,*iffrag;
-    int lenv,lenf;
-    ifvert=fopen(vertfile,"r");
-    lenv=byte(ifvert);
-    while(fgets(buffer,lenv,ifvert));
-    fclose(ifvert);
-    iffrag=fopen(fragfile,"r");
-    lenf=byte(iffrag);
-    while(fgets(buffer2,lenf,iffrag));
-    fclose(iffrag);
+    FILE *fp;
+    char* content;
+    long size;
+    fp=fopen(filename,"rb");
+    if(fp==NULL) return "";
+    fseek(fp,0L,SEEK_END);
+    size=ftell(fp)+1;
+    fclose(fp);
+    fp=fopen(filename,"r");
+    content=(char*)calloc(size,1);
+    fread(content, 1, size-1, fp);
+    fclose(fp);
+    return content;
 }
-int byte(FILE *fp)
+void shader_compile(GLuint *name,GLenum shaderType,const char* path)
 {
-    int length;
-    fseek(fp, 0, SEEK_END);
-    length=ftell(fp) + 1;
-    fseek(fp,0,SEEK_SET);
-    return length;
+    GLint ifCompiled;
+    const GLchar* itsSource=shader_file_reader(path);
+    *name=glCreateShader(shaderType);
+    if(*name == 0) 
+        printf("COULD NOT LOAD SHADER: %s!\n", path);
+    glShaderSource(*name,1,(const char**)&itsSource,NULL);
+    glCompileShader(*name);
+    //checkerror
+    glGetShaderiv(*name,GL_COMPILE_STATUS,&ifCompiled);
+    if(ifCompiled==GL_FALSE){
+        printf("Shader Compile Error: %s!\n", path);
+        glDeleteShader(*name);
+        return;
+    }
+        
+    free((void *)itsSource);
 }
-GLuint GLSLShaderCompiler(const GLchar *verSource,const GLchar *fragSource)
+GLuint shader_link(GLuint ifvert,GLuint iffrag)
 {
-    GLuint verOBJ,fragOBJ,Program;
-    verOBJ=glCreateShader(GL_VERTEX_SHADER);
-    glShaderSource(verOBJ,1,&verSource,NULL);
-    glCompileShader(verOBJ);
-    
-    fragOBJ=glCreateShader(GL_FRAGMENT_SHADER);
-	glShaderSource(fragOBJ,1,&fragSource,NULL);
-	glCompileShader(fragOBJ);
-	
-	Program=glCreateProgram();
-	glAttachShader(Program,verOBJ);
-	glAttachShader(Program,fragOBJ);
+    GLint ifLinked;
+    GLuint Program = glCreateProgram();
+    glAttachShader(Program,ifvert);
+	glAttachShader(Program,iffrag);
 	glLinkProgram(Program);
-	glDeleteShader(verOBJ);
-	glDeleteShader(fragOBJ);
-	
+	//checkerror
+	glGetProgramiv(Program,GL_LINK_STATUS,&ifLinked);
+    if(ifLinked==GL_FALSE) {
+        printf("Shader Program Link Error\n");
+        glDeleteShader(ifvert);
+        glDeleteShader(iffrag);
+        return 1u;
+    }
+	glDeleteShader(ifvert);
+	glDeleteShader(iffrag);
 	return Program;
-}
-
-if(use.ifuse == true) glUseProgram(use.PID);
-
-if(use.setfile == true){
-    GLSLFileReader(use.fvert,use.ffrag,use.BUFF,use.BUFF2);
-    const GLchar *VSSource=&use.BUFF;
-    const GLchar *FSSource=&use.BUFF2;
-    use.PID = GLSLShaderCompiler(VSSource,FSSource);
 }
