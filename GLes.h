@@ -8,7 +8,6 @@
 #include <stdbool.h>
 #include <math.h>
 //variables and functions
-extern char *BUFF,*BUFF2;
 extern int width,height;
 void framebuffersize_callback(GLFWwindow* win,int width,int height);
 void key_callback(GLFWwindow* win,int key,int scancode,int action,int mode);

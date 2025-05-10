@@ -3,14 +3,14 @@
 int main(int argc,char *argv[])
 {   //Windows&&GLEW
 	glfwInit();
-	glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR,3);
+	glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR,4);
 	glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR,3);
 	glfwWindowHint(GLFW_OPENGL_PROFILE,GLFW_OPENGL_CORE_PROFILE);
 	glfwWindowHint(GLFW_RESIZABLE,GL_TRUE);
 	GLFWwindow* win=glfwCreateWindow(640,480,"GLTEST",NULL,NULL);
 	if(win==NULL)
 	{
-		printf("an AMC duty!unable to create window!\n");
+		printf("unable to create window!\n");
 		glfwTerminate();
 		return -1;
 	}
