@@ -11,4 +11,4 @@ git:
 	git commit -m "Learn GL"
 	git status
 run:
-	./gltest
+	@./gltest
