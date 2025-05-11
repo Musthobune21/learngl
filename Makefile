@@ -4,7 +4,7 @@ gltest:*.c
 	$(CC) $^ $(CFLAGS) -o $@
 .PHONY:clean git
 clean:
-	rm -rf *.out *.o gltest
+	@rm -rf *.out *.o gltest
 
 git:
 	git add .
