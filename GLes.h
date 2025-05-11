@@ -5,8 +5,9 @@
 #include <stdio.h>
 #include <stdlib.h>
 //#include <string.h>
-#include <stdbool.h>
 #include <math.h>
+#define STB_IMAGE_IMPLEMENTATION
+#include <stb/stb_image.h>
 //variables and functions
 extern int width,height;
 void framebuffersize_callback(GLFWwindow* win,int width,int height);
