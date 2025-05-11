@@ -1,7 +1,7 @@
 #include "GLes.h"
 
 int main(int argc,char *argv[])
-{   //Windows&&GLEW
+{   //GLinit
 	glfwInit();
 	glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR,4);
 	glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR,3);
@@ -19,34 +19,17 @@ int main(int argc,char *argv[])
 	glfwSetFramebufferSizeCallback(win,framebuffersize_callback);
 	glewExperimental=GL_TRUE;
 	glewInit();
-	/*
-	glfwGetFramebufferSize(win,&width,&height);
-    glViewport(0,0,width,height);
-	*/
+	//shaders
 	GLfloat vertatri[]=
 	{
-		-0.5f,-0.5f,0.0f,
-		0.5f,-0.5f,0.0f,
-		0.0f,0.5f,0.0f
+		-0.5f,-0.5f,0.0f,1.0f,0.0f,0.0f
+		0.5f,-0.5f,0.0f,0.0f,1.0f,0.0f
+		0.0f,0.5f,0.0f,0.0f,0.0f,1.0f
 	};
 GLuint VertexID,FragmentID,PID;
 shader_compile(&VertexID,GL_VERTEX_SHADER,"./vertex.glsl");
 shader_compile(&FragmentID,GL_FRAGMENT_SHADER,"./fragment.glsl");
 PID=shader_link(VertexID,FragmentID);
-/*	
-	glShaderSource(vershader,1,&VSSource,NULL);
-	glCompileShader(vershader);
-	GLuint fragshader=glCreateShader(GL_FRAGMENT_SHADER);
-	glShaderSource(fragshader,1,&FSSource,NULL);
-	glCompileShader(fragshader);
-	GLuint shaderprogram=glCreateProgram();
-	glAttachShader(shaderprogram,vershader);
-	glAttachShader(shaderprogram,fragshader);
-	glLinkProgram(shaderprogram);
-	glDeleteShader(vershader);
-	glDeleteShader(fragshader);
-	*/
-	
 	//Elements
 	GLuint vbo,vao;
 	glGenBuffers(1,&vbo);
@@ -54,8 +37,10 @@ PID=shader_link(VertexID,FragmentID);
 	glBindVertexArray(vao);
 	glBindBuffer(GL_ARRAY_BUFFER,vbo);
 	glBufferData(GL_ARRAY_BUFFER,sizeof vertatri,vertatri,GL_STATIC_DRAW);
-	glVertexAttribPointer(0,3,GL_FLOAT,GL_FALSE,3*sizeof(GLfloat), (GLvoid*)0);
+	glVertexAttribPointer(0,3,GL_FLOAT,GL_FALSE,6*sizeof(GLfloat), (GLvoid*)0);
+	glVertexAttribPointer(1,3,GL_FLOAT,GL_FALSE,6*sizeof(GLfloat),(GLvoid*)3*sizeof(GLfloat));
 	glEnableVertexAttribArray(0);
+	glEnableVertexAttribArray(1);
 	glBindBuffer(GL_ARRAY_BUFFER, 0);
 	glBindVertexArray(0);
     //Events

@@ -22,7 +22,7 @@ void shader_compile(GLuint *name,GLenum shaderType,const char* path)
     *name=glCreateShader(shaderType);
     if(*name == 0) 
         printf("COULD NOT LOAD SHADER: %s!\n", path);
-    glShaderSource(*name,1,(const char**)&itsSource,NULL);
+    glShaderSource(*name,1,(const GLchar**)&itsSource,NULL);
     glCompileShader(*name);
     //checkerror
     glGetShaderiv(*name,GL_COMPILE_STATUS,&ifCompiled);
