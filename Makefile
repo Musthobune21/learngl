@@ -1,7 +1,8 @@
 CC = gcc
 CFLAGS = -lm -lglfw -lGL -lGLEW -lGLU
+SRCS = ./src/
 gltest:*.c
-	$(CC) $^ $(CFLAGS) -o $@
+	$(CC) $(SRCS)$^ $(CFLAGS) -o $@
 .PHONY:clean git run
 clean:
 	@rm -rf *.out *.o gltest
