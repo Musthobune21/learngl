@@ -7,7 +7,7 @@ clean:
 	@rm -rf *.out *.o gltest
 
 git:
-	git add ..
+	git add .
 	git commit -m "Learn GL"
 	git status
 run:
