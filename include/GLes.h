@@ -15,5 +15,5 @@ void key_callback(GLFWwindow* win,int key,int scancode,int action,int mode);
 char* shader_file_reader(const char* filename);
 void shader_compile(GLuint *name,GLenum shaderType,const char* path);
 GLuint shader_link(GLuint ifvert,GLuint iffrag);
-void load_texture2d(const char *image_path,_Bool ycoord);
+void load_texture2d(char const *image_path,_Bool ycoord);
 #endif
