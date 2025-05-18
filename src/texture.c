@@ -8,12 +8,11 @@ void load_texture2d(char const *image_path,_Bool ycoord)
     tex_data=stbi_load(image_path,&tex_width,&tex_height,&Channels,0);
     if(!*tex_data){ 
         printf("failed to load texture");
-        stbi_image_free(tex_data);
     }else{
         printf("loading… success!\n");
-        glTexImage2D(GL_TEXTURE_2D,0,GL_RGB,tex_width,tex_height,0,GL_RGB, GL_UNSIGNED_BYTE,tex_data);
+        glTexImage2D(GL_TEXTURE_2D,0,GL_RGBA,tex_width,tex_height,0,GL_RGBA, GL_UNSIGNED_BYTE,tex_data);
         glGenerateMipmap(GL_TEXTURE_2D);
-        stbi_image_free(tex_data);
     }
+    stbi_image_free(tex_data);
     return;
 }
