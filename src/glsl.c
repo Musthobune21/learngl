@@ -1,4 +1,4 @@
-#include "GLes.h"
+#include "../include/GLes.h"
 char* shader_file_reader(const char* filename)
 {
     FILE *fp;

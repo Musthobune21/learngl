@@ -7,11 +7,13 @@
 #include <string.h>
 #include <math.h>
 #include <cglm/cglm.h>
+#define STB_IMAGE_IMPLEMENTATION
 #include <stb/stb_image.h>
 //variables and functions
 extern int width,height;
 void framebuffersize_callback(GLFWwindow* win,int width,int height);
 void key_callback(GLFWwindow* win,int key,int scancode,int action,int mode);
+void init(void)
 char* shader_file_reader(const char* filename);
 void shader_compile(GLuint *name,GLenum shaderType,const char* path);
 GLuint shader_link(GLuint ifvert,GLuint iffrag);
