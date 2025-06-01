@@ -1,14 +1,12 @@
-# **Learngl OVERVIEW** 
-*by HUA <Rolereach2021@163.com>*
+# **Learngl 概率** 
+*作者:HUA <Rolereach2021@163.com>*
 
 ---
 
-## Project Structure
+## 项目结构
 
-- **README.md**,this file,which is a introduction to my OpenGL learning project.
+- **README.md**,本文件，我的纯C语言学习OpenGL介绍;
 
-- **./src/**,the directionary to contain all *source code*.
-
-    - **WARNING**:the language of this project is **pure C**.
+- **./src/**,*源码*文件夹;
 
 -
