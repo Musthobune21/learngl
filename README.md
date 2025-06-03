@@ -1,4 +1,4 @@
-# **Learngl 概率** 
+# **Learngl 概述** 
 *作者:HUA <Rolereach2021@163.com>*
 
 ---
