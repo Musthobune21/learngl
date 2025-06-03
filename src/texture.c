@@ -1,4 +1,4 @@
-#include "../include/GLes.h"
+#include "../include/learngl.h"
 void load_texture2d(char const *image_path,_Bool ycoord)
 {
     int Channels,tex_width,tex_height;

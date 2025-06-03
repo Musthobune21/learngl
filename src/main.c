@@ -1,4 +1,4 @@
-#include "../include/GLes.h"
+#include "../include/learngl.h"
 int main(int argc,char *argv[])
 {   //GLinit
     glfwInit();
@@ -111,9 +111,9 @@ int main(int argc,char *argv[])
 		glm_rotate(model,45.0f,axis);
 		glm_translate(view,(vec3){0.0f,0.0f,-3.0f});
 		glm_perspective(glm_rad(45.0f), (GLfloat)640 / (GLfloat)480, 0.1f, 100.0f,projection);
-        glUniformMatrix4fv(glGetUniformLocation(PID,"model"),1,GL_FALSE,(const GLfloat *)model);
-        glUniformMatrix4fv(glGetUniformLocation(PID,"view"),1,GL_FALSE,(const GLfloat *)view);
-        glUniformMatrix4fv(glGetUniformLocation(PID,"projection"),1,GL_FALSE,(const GLfloat *)projection);
+        set_mat4("model",(const GLfloat *)model,PID);
+        set_mat4("view",(const GLfloat *)view,PID);
+        set_mat4("projection",(const GLfloat *)projection,PID);
 		//glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
 		glDrawArrays(GL_TRIANGLES, 0, 36);
 		glBindVertexArray(0);

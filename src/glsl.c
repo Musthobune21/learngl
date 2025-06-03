@@ -1,4 +1,4 @@
-#include "../include/GLes.h"
+#include "../include/learngl.h"
 char* shader_file_reader(const char* filename)
 {
     FILE *fp;
@@ -52,4 +52,8 @@ GLuint shader_link(GLuint ifvert,GLuint iffrag)
 	glDeleteShader(ifvert);
 	glDeleteShader(iffrag);
 	return Program;
+}
+void set_mat4(const char *uniform_var,const GLfloat *array,GLuint prog)
+{
+    glUniformMatrix4fv(glGetUniformLocation(prog,uniform_var),1,GL_FALSE,array);
 }
