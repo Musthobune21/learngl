@@ -1,4 +1,5 @@
 #include "../include/learngl.h"
+
 int main(int argc,char *argv[])
 {   //GLinit
     glfwInit();
@@ -96,6 +97,8 @@ int main(int argc,char *argv[])
 	while(!glfwWindowShouldClose(win))
 	{
 		glfwPollEvents();
+		do_movement();
+		
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 		glUseProgram(PID);
 		glBindTexture(GL_TEXTURE_2D,tex);
@@ -106,10 +109,12 @@ int main(int argc,char *argv[])
 		glm_mat4_identity(view);
 		glm_mat4_identity(projection);
 		glm_mat4_identity(model);
-		
 		glm_normalize(axis);
+		//mvp
 		glm_rotate(model,45.0f,axis);
-		glm_translate(view,(vec3){0.0f,0.0f,-3.0f});
+		//glm_translate(view,(vec3){0.0f,0.0f,-3.0f});
+		glm_vec3_add(cPOS,cFront,target);
+		glm_lookat(cPOS,target,wUp,view);
 		glm_perspective(glm_rad(45.0f), (GLfloat)640 / (GLfloat)480, 0.1f, 100.0f,projection);
         set_mat4("model",(const GLfloat *)model,PID);
         set_mat4("view",(const GLfloat *)view,PID);

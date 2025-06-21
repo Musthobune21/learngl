@@ -10,6 +10,7 @@
 #include <stb/stb_image.h>
 #include "shader.h"
 #include "texture.h"
+#include "camera.h"
 //variables and functions
 extern int width,height;
 void framebuffersize_callback(GLFWwindow* win,int width,int height);
