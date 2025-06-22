@@ -113,6 +113,7 @@ int main(int argc,char *argv[])
 		//mvp
 		glm_rotate(model,45.0f,axis);
 		//glm_translate(view,(vec3){0.0f,0.0f,-3.0f});
+		vec3 target;
 		glm_vec3_add(cPOS,cFront,target);
 		glm_lookat(cPOS,target,wUp,view);
 		glm_perspective(glm_rad(45.0f), (GLfloat)640 / (GLfloat)480, 0.1f, 100.0f,projection);

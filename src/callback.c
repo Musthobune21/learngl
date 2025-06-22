@@ -18,9 +18,16 @@ void framebuffersize_callback(GLFWwindow* win,int width,int height)
 }
 void do_movement()
 {
-    GLfloat speed = 0.01f;
+    GLfloat speed = 0.05f;
+    vec3 right;
+    glm_cross(cFront,wUp,right);
+    glm_normalize(right);
     if(keys[GLFW_KEY_W]) 
     glm_vec3_muladds(cFront,speed,cPOS);
     if(keys[GLFW_KEY_S]) 
     glm_vec3_mulsubs(cFront,speed,cPOS);
+    if(keys[GLFW_KEY_A]) 
+    glm_vec3_mulsubs(right,speed,cPOS);
+    if(keys[GLFW_KEY_D]) 
+    glm_vec3_muladds(right,speed,cPOS);
 }
