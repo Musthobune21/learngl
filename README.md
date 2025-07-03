@@ -3,10 +3,16 @@
 
 ---
 
-## 项目结构
+## 特别鸣谢
 
-- **README.md**,本文件，我的纯C语言学习OpenGL介绍;
+- **Cglm**, [源仓库](https://github.com/recp/cglm)
 
-- **./src/**,*源码*文件夹;
+- **GLFW**, [源仓库](https://github.com/glfw/glfw)
 
--
+- **GLEW**, [网址](http://glew.sourceforge.net/)
+
+- **stb library**, [源仓库](https://github.com/nothings/stb)
+
+---
+
+# 2025.7
